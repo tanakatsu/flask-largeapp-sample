@@ -4,5 +4,19 @@ services:
   web:
     build: .
     ports:
-      - "5000:5000"
+      - '5000:5000'
+    depends_on:
+      - db
     command: python manage.py runserver
+    # volumes:
+    #   - .:/app
+    links:
+      - db
+    environment:
+      FLASK_ENV: development
+  db:
+    image: postgres:10.5
+    environment:
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - '5432:5432'
