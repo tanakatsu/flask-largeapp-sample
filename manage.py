@@ -3,19 +3,14 @@ from app import create_app
 from flask_migrate import MigrateCommand
 from flask_script import Manager, Server
 
-env = os.environ.get('FLASK_ENV', 'development')
-if env == 'development':
-    config_file = 'config.DevelopmentConfig'
-elif env == 'staging':
-    config_file = 'config.StagingConfig'
-elif env == 'production':
-    config_file = 'config.ProductionConfig'
-elif env == 'test':
-    config_file = 'config.TestConfig'
-else:
-    raise Exception("No such environment is found: {}".format(env))
+config = {
+    'development': 'config.DevelopmentConfig',
+    'staging': 'config.StagingConfig',
+    'production': 'config.ProductionConfig',
+    'test': 'config.TestConfig',
+}
 
-app = create_app(config_file)
+app = create_app(config[os.environ.get('FLASK_ENV', 'development')])
 
 manager = Manager(app)
 manager.add_command('db', MigrateCommand)
