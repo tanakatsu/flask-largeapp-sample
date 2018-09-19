@@ -90,7 +90,7 @@ $ docker-compose up [-d]
 ##### Run tests
 
 ```
-# Start database
+# Start database server
 $ docker-compose up -d db
 ```
 
