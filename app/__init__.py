@@ -1,6 +1,6 @@
 from flask import Flask
 from app.models import db
-from app.views import entry
+from app.views import entry, user
 from flask_migrate import Migrate
 
 
@@ -14,5 +14,6 @@ def create_app(config_file):
     migrate.init_app(app, db)
 
     app.register_blueprint(entry.app)
+    app.register_blueprint(user.app)
 
     return app

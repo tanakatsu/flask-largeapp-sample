@@ -9,8 +9,8 @@ class BaseConfig(object):
 
 
 class DevelopmentConfig(BaseConfig):
-    # SQLALCHEMY_DATABASE_URI = "sqlite:///{path}/app.db".format(path=base_dir)
-    # SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://postgres:postgres@127.0.0.1:5432/flask_sampleapp_dev'
+    # SQLALCHEMY_DATABASE_URI = "sqlite:///{path}/app.db".format(path=base_dir)  # localhost + sqlite3
+    # SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://postgres:postgres@127.0.0.1:5432/flask_sampleapp_dev'  # localhost + postgresql
     SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://postgres:postgres@db:5432/flask_sampleapp_dev'  # docker
     SECRET_KEY = 'your secret key'
 
