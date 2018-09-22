@@ -14,7 +14,7 @@ app = create_app(config[os.environ.get('FLASK_ENV', 'development')])
 
 manager = Manager(app)
 manager.add_command('db', MigrateCommand)
-manager.add_command('runserver', Server(host='0.0.0.0', port=os.environ.get('FLASK_PORT', 5000)))
+manager.add_command('runserver', Server(host='0.0.0.0', port=os.environ.get('FLASK_RUN_PORT', 5000)))
 
 if __name__ == "__main__":
     manager.run()
