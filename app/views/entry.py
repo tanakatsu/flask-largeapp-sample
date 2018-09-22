@@ -10,7 +10,7 @@ app = Blueprint('entry', __name__, url_prefix='/')
 @app.route('/')
 def show_entries():
     entries = Entry.query.order_by(Entry.id.desc()).all()
-    return render_template('show_entries.html', entries=entries)
+    return render_template('entries/show_entries.html', entries=entries)
 
 
 @app.route('/add', methods=['POST'])
