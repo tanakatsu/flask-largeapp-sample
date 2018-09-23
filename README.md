@@ -8,17 +8,26 @@
     |-- config.py
     |-- /app
         |-- __init__.py
-        |-- models.py
+        |-- /models
+            |-- __init__.py
+            |-- entry.py
+            |-- user.py
         |-- /views
             |-- __init__.py
             |-- entry.py
+            |-- user.py
         |-- /templates
             |-- layout.html
-            |-- show_entries.html
+            |-- /entries
+                |-- show_entries.html
         |-- /static
             |-- style.css
     |-- /tests
-        |-- test_sample.py
+        |-- __init__.py
+        |-- /models
+            |-- test_entry.py
+        |-- /views
+            |-- test_api.py
 
 ```
 
@@ -56,10 +65,22 @@ $ FLASK_ENV=test python manage.py db upgrade
 $ FLASK_ENV=development python manage.py runserver
 ```
 
-#### Run tests
+or
 
 ```
-$ nosetests -s tests
+$ FLASK_ENV=development FLASK_APP=manage flask run
+```
+
+#### Run tests
+
+Set PYTHONPATH, at first.
+```
+$ export PYTHONPATH=`pwd`
+```
+
+Then,
+```
+$ nosetests -s
 ```
 
 ### Docker
@@ -72,7 +93,7 @@ $ docker-compose build
 ##### Create database
 
 ```
-$ docker-compose run web python create_db.py
+$ docker-compose run web flask createdb
 ```
 
 ##### Create tables
@@ -96,12 +117,18 @@ $ docker-compose up -d db
 
 ```
 # Create database for test
-$ docker-compose run -e FLASK_ENV=test web python create_db.py
+$ docker-compose run -e FLASK_ENV=test web flask createdb
 $ docker-compose run -e FLASK_ENV=test web python manage.py db upgrade
 ```
 
 ```
 # Run test
-$ docker-compose run -e FLASK_ENV=test web nosetests -s tests
+$ docker-compose run -e FLASK_ENV=test web nosetests -s
 ```
 
+##### Tips
+
+```
+# Connect postgresql database
+$ docker exec -it flask-largeapp-sample_db_1 psql -U postgres flask_sampleapp_dev
+```
