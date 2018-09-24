@@ -13,6 +13,7 @@ class DevelopmentConfig(BaseConfig):
     # SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://postgres:postgres@127.0.0.1:5432/flask_sampleapp_dev'  # localhost + postgresql
     SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://postgres:postgres@db:5432/flask_sampleapp_dev'  # docker
     SECRET_KEY = 'your secret key'
+    DEBUG = True
 
 
 class StagingConfig(BaseConfig):
@@ -30,6 +31,6 @@ class ProductionConfig(BaseConfig):
 class TestConfig(BaseConfig):
     ENV = 'test'
     TESTING = True
-    # SQLALCHEMY_DATABASE_URI = "sqlite:///{path}/test.db".format(path=base_dir)
+    # SQLALCHEMY_DATABASE_URI = "sqlite:///{path}/test.db".format(path=base_dir)  # local
     SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://postgres:postgres@db:5432/flask_sampleapp_test'  # docker
     SECRET_KEY = 'your secret key'
