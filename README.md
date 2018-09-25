@@ -14,12 +14,17 @@
             |-- user.py
         |-- /views
             |-- __init__.py
+            |-- error.py
             |-- entry.py
             |-- user.py
         |-- /templates
             |-- layout.html
             |-- /entries
                 |-- show_entries.html
+            |-- /errors
+                |-- 400.html
+                |-- 404.html
+                |-- 500.html
         |-- /static
             |-- style.css
     |-- /tests
